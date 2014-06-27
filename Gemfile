@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'haml-rails'
 
 gem 'devise'
+gem 'bootstrap3-rails'
 
 group :production do
   gem 'pg'

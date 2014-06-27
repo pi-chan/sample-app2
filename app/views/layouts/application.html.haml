@@ -1,9 +1,24 @@
 !!!
 %html
   %head
-    %title SakuraMarket
+    %title= content_for?(:title) ? yield(:title) : "さくらマーケット"
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = yield
+    = render partial: 'nav'
+    .container
+      - if notice
+        %div.alert.alert-success.alert-dismissable
+          = notice
+          %button(type="button" class="close" data-dismiss="alert" aria-hidden="true")
+            &times
+
+      - if alert
+        %div.alert.alert-warning.alert-dismissable
+          = alert
+          %button(type="button" class="close" data-dismiss="alert" aria-hidden="true")
+            &times
+
+      = yield

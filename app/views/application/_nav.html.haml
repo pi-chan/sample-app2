@@ -1,0 +1,26 @@
+%nav.navbar{role: "navigation"}
+  .navbar-header
+    %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    = link_to "さくらマーケット", root_path, class: "navbar-brand"
+  .collapse.navbar-collapse
+    %ul.nav.navbar-nav
+      %ul.nav.navbar-nav
+        %li= link_to "ホーム", root_path
+        - if user_signed_in?
+          %li= link_to "ユーザーを探す", "#"
+          %li= link_to "購入ページ", "#"
+          %li= link_to "ショッピングカート", "#"
+    %ul.nav.navbar-nav.navbar-right
+      %li.dropdown
+        %a(href="#" class="dropdown-toggle" data-toggle="dropdown") アカウント<b class="caret"></b>
+        %ul.dropdown-menu
+          - if user_signed_in?
+            %li= link_to "アカウント管理", edit_user_registration_path(@user)
+            %li= link_to "ログアウト", destroy_user_session_path, method: :delete
+          - else
+            %li= link_to "ユーザー登録", new_registration_path(:user)
+            %li= link_to "ログイン", new_user_session_path
