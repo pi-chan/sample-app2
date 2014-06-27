@@ -1,0 +1,9 @@
+%h2 認証メールの再送
+= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, role:"form" }) do |f|
+  = devise_error_messages!
+  .form-group
+    = f.label :email, "Eメール"
+    = f.email_field :email, :autofocus => true, class:"form-control"
+  .form-group
+    = f.submit "認証メールを送る", class:"btn btn-primary"
+= render "devise/shared/links"

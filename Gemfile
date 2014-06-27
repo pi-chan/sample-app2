@@ -11,6 +11,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'haml-rails'
 
+gem 'devise'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
@@ -18,7 +20,8 @@ end
 
 group :development, :test do
   gem 'hirb'
-  gem 'hirb-unicode'  
+  gem 'hirb-unicode'
+  gem 'letter_opener'
   gem 'spring'
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

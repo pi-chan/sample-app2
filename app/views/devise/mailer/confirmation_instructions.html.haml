@@ -1,0 +1,13 @@
+%p
+  #{@email} 様
+
+%p
+  現在仮登録の状態です。
+  %br
+  以下の認証リンクをクリックし本登録を完了してください。
+
+%p= link_to "#{@email}を認証する", confirmation_url(@resource, :confirmation_token => @token)
+
+%p
+  さくらマーケット
+  
