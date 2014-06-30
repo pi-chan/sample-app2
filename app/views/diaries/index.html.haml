@@ -1,0 +1,6 @@
+%h1 Diaries#index
+%p Find me in app/views/diaries/index.html.haml
+
+%ul
+  - @diaries.each do |d|
+    %li= d.title

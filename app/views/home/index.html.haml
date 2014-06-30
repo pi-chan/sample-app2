@@ -1,3 +1,6 @@
 %h1 Home#index
 %p Find me in app/views/home/index.html.haml
 
+- if user_signed_in?
+  %button.btn.btn-lg(type="button")
+    = link_to "日記を書く", new_user_diary_path(@user)

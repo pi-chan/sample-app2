@@ -23,7 +23,7 @@ group :development, :test do
   gem 'hirb'
   gem 'hirb-unicode'
   gem 'letter_opener'
-  gem 'spring'
+  gem 'spring-commands-rspec' 
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
   gem 'foreman'
@@ -38,6 +38,7 @@ group :development, :test do
   gem 'rb-inotify', :require=>false
   gem 'sqlite3'
   gem 'factory_girl_rails'
+  gem 'pry', '< 0.10.0'
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
