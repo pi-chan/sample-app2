@@ -1,2 +1,3 @@
-%h1 Diaries#edit
-%p Find me in app/views/diaries/edit.html.haml
+%h1 日記を編集する
+
+= render partial:"form", locals:{title:"更新する", method: :put}

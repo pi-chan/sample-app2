@@ -1,6 +1,12 @@
-%h1 Diaries#index
-%p Find me in app/views/diaries/index.html.haml
+%h1= "#{@user.email}の日記"
 
-%ul
+%p= render partial:"write_diary_button"
+  
+%ul.diary-list
   - @diaries.each do |d|
-    %li= d.title
+    %li.row
+      .col-xs-6
+        = link_to d.title, user_diary_path(@user, d)
+        = "(#{time_ago_in_words(d.created_at)} ago)"
+      .col-xs-6
+        = render partial: "links", locals:{user: @user, diary: d}

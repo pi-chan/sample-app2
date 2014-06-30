@@ -11,9 +11,16 @@
       %ul.nav.navbar-nav
         %li= link_to "ホーム", root_path
         - if user_signed_in?
-          %li= link_to "ユーザーを探す", "#"
-          %li= link_to "購入ページ", "#"
-          %li= link_to "ショッピングカート", "#"
+          %li.dropdown
+            %a(href="#" class="dropdown-toggle" data-toggle="dropdown") 日記<b class="caret"></b>
+            %ul.dropdown-menu
+              %li= link_to "日記を書く", new_user_diary_path(current_user)
+              %li= link_to "日記一覧", user_diaries_path(current_user)
+          %li.dropdown
+            %a(href="#" class="dropdown-toggle" data-toggle="dropdown") ショッピング<b class="caret"></b>
+            %ul.dropdown-menu
+              %li= link_to "購入ページ", "#"
+              %li= link_to "ショッピングカート", "#"
     %ul.nav.navbar-nav.navbar-right
       %li.dropdown
         %a(href="#" class="dropdown-toggle" data-toggle="dropdown") アカウント<b class="caret"></b>

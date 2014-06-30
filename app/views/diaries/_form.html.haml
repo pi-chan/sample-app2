@@ -1,0 +1,10 @@
+= form_for [current_user, @diary], role:"form", html:{method: method} do |f|
+  .form-group
+    = f.label :title, "タイトル"
+    = f.text_field :title, autofocus:true, class:"form-control"
+  .form-group
+    = f.label :body, "本文"
+    = f.text_area :body, class:"form-control", rows: 15
+  .form-group
+    = f.submit title, class:"form-control"
+

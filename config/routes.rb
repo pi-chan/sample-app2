@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   devise_for :users
-  resources :users, only: [] do
+  resources :user, only: [] do
     resources :diaries do
     end
   end

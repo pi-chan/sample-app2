@@ -1,12 +1,3 @@
-%h1 Diaries#new
-%p Find me in app/views/diaries/new.html.haml
+%h1 日記を書く
 
-= form_for [@user, @diary], role:"form", html:{method: :post} do |f|
-  .form-group
-    = f.label :title
-    = f.text_field :title, autofocus:true, class:"form-control"
-  .form-group
-    = f.label :body
-    = f.text_area :body, class:"form-control"
-  .form-group
-    = f.submit class:"form-control"
+= render partial:"form", locals:{title:"投稿する", method: :post}
