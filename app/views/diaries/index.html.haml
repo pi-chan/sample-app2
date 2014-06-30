@@ -8,5 +8,6 @@
       .col-xs-6
         = link_to d.title, user_diary_path(@user, d)
         = "(#{time_ago_in_words(d.created_at)} ago)"
+        %span.glyphicon.glyphicon-thumbs-up= d.likes.count
       .col-xs-6
         = render partial: "links", locals:{user: @user, diary: d}

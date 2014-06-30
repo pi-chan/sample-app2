@@ -1,5 +1,11 @@
 - if defined? show_index_link
   %span= link_to "一覧", user_diaries_path(user), role: "button", class:"btn btn-primary"
-%span= link_to "編集", edit_user_diary_path(user, diary), role: "button", class:"btn btn-primary"
-%span= link_to "削除", user_diary_path(user, diary), method: :delete, data: { confirm: 'Are you sure?' }, role: "button", class:"btn btn-danger"
 
+- if user.id == current_user.id
+  %span= link_to "編集", edit_user_diary_path(user, diary), role: "button", class:"btn btn-primary"
+  %span= link_to "削除", user_diary_path(user, diary), method: :delete, data: { confirm: 'Are you sure?' }, role: "button", class:"btn btn-danger"
+- elsif current_user.likes.find_by_diary_id(diary.id)
+  %span(id="like-diary-#{diary.id}")= render partial: "dislike", locals:{diary: diary}
+- else    
+  %span(id="like-diary-#{diary.id}")= render partial: "like", locals:{diary: diary}
+    
