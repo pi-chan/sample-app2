@@ -85,49 +85,49 @@ RSpec.describe DiariesController, :type => :controller do
     describe "GET 'index'" do
       it "is redirected to root url" do
         get 'index', user_id: @user.id
-        expect(response).to redirect_to(root_url)
+        expect(response).to redirect_to(new_user_session_url)
       end
     end
 
     describe "GET 'show'" do
       it "is redirected to root url" do
         get 'show', user_id: @user.id, id: @diary.id
-        expect(response).to redirect_to(root_url)
+        expect(response).to redirect_to(new_user_session_url)
       end
     end
 
     describe "GET 'new'" do
       it "is redirected to root url" do
         get 'new', user_id: @user.id
-        expect(response).to redirect_to(root_url)
+        expect(response).to redirect_to(new_user_session_url)
       end
     end
 
     describe "GET 'edit'" do
       it "is redirected to root url" do
         get 'edit', user_id: @user.id, id: @diary.id
-        expect(response).to redirect_to(root_url)
+        expect(response).to redirect_to(new_user_session_url)
       end
     end
 
     describe "POST 'create'" do
       it "is redirected to root url" do
         post 'create', user_id: @user.id, diary:{title: "title", body: "body"}
-        expect(response).to redirect_to(root_url)
+        expect(response).to redirect_to(new_user_session_url)
       end
     end
 
     describe "PUT update'" do
       it "is redirected to root url" do
         put 'update', user_id: @user.id, id: @diary.id
-        expect(response).to redirect_to(root_url)
+        expect(response).to redirect_to(new_user_session_url)
       end
     end
 
     describe "DELETE 'destroy'" do
       it "is redirected to root url" do
         delete 'destroy', user_id: @user.id, id: @diary.id
-        expect(response).to redirect_to(root_url)
+        expect(response).to redirect_to(new_user_session_url)
       end
     end
   end
