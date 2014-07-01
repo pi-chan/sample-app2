@@ -1,13 +1,11 @@
 %h1= "#{@user.email}の日記"
 
-%p= render partial:"write_diary_button"
-  
 %ul.diary-list
   - @diaries.each do |d|
     %li.row
       .col-xs-6
         = link_to d.title, user_diary_path(@user, d)
-        = "(#{time_ago_in_words(d.created_at)} ago)"
-        %span.glyphicon.glyphicon-thumbs-up= d.likes.count
+        %span.label.label-primary(id="like-count-diary-#{d.id}")= render partial: "like_count", locals:{diary: d}
+        %span.label.label-default= "#{time_ago_in_words(d.created_at)} ago"
       .col-xs-6
         = render partial: "links", locals:{user: @user, diary: d}
