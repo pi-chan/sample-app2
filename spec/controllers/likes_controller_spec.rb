@@ -81,11 +81,25 @@ RSpec.describe LikesController, :type => :controller do
       
     end
   end
-  # ログイン中のユーザーだけど、自分のじゃないLikeを削除しようとして失敗
   
-  # ログインしていないユーザーがアクションにアクセスしてもダメ
-  describe "Not signed-in user" do
-    
+  describe "ログインしていないとき" do
+    before do
+      sign_out @user
+    end
+
+    describe "POST 'create'すると" do
+      it "ログインページにリダイレクトされる" do
+        post 'create', format: "js", user_id: @user.id, diary_id: @diary3.id
+        expect(response).to redirect_to(new_user_session_url)
+      end
+    end
+
+    describe "delete 'destroy'" do
+      it "ログインページにリダイレクトされる" do
+        delete 'destroy', format: "js", user_id: @user.id, diary_id:@diary3.id
+        expect(response).to redirect_to(new_user_session_url)
+      end
+    end
   end
 
 end
