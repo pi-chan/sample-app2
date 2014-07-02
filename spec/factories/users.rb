@@ -7,7 +7,7 @@ FactoryGirl.define do
   
   factory :user do
     email 
-    password "hogehoge"
+    password "password"
     confirmed_at Time.now
   end
 end

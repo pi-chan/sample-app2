@@ -7,4 +7,16 @@ class User < ActiveRecord::Base
   has_many :diaries, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_diaries, through: :likes, source: :diary
+
+  def display_name
+    name.presence || email
+  end
 end
+
+
+
+
+
+
+
+

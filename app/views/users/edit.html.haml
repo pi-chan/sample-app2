@@ -1,0 +1,23 @@
+%div.devise
+  %h2
+    ユーザー情報
+  = form_for(@user, html:{ method: :put, role: "form" }) do |f|
+    = render partial: "error_messages", locals:{object: @user}
+    .form-group
+      = f.label :name, "ニックネーム"
+      = f.text_field :name, :autofocus => true, class:"form-control"
+    .form-group
+      = f.label :ship_name, "配送先お名前"
+      = f.text_field :ship_name, class:"form-control"
+    .form-group
+      = f.label :ship_zip_code, "郵便番号"
+      = f.text_field :ship_zip_code, class:"form-control"
+    .form-group
+      = f.label :ship_address, "ご住所"
+      = f.text_field :ship_address, class:"form-control"
+    .form-group
+      = f.label :current_password, "現在のパスワード"
+      %i (更新するために現在のパスワードが必要です。)
+      = f.password_field :current_password, class:"form-control"
+    .form-group
+      = f.submit "更新", class:"btn btn-primary"

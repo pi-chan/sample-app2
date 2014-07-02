@@ -77,7 +77,6 @@ RSpec.describe DiariesController, :type => :controller do
   end
 
   describe "not signed-in user" do
-
     before do
       sign_out @user
     end

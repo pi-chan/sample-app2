@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -22,7 +23,12 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    session[:previous_url] || root_path
+    if current_user.name.empty?
+      flash[:notice] = "便利に使うためにニックネームを入力しましょう"
+      edit_user_registration_path
+    else
+      session[:previous_url] || root_path
+    end
   end  
 
 end
