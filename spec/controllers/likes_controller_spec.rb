@@ -11,34 +11,21 @@ RSpec.describe LikesController, :type => :controller do
     @diary3 = @user3.diaries.create(title:"title", body:"body")
   end
 
-  describe "ログイン中" do
-    describe "ログインしているユーザーidでPOST 'create'すると" do
+  describe "ログインしているユーザーidで" do
+    describe "POST 'create'すると" do
       it "HTTPサクセス" do
         post 'create', format: "js", user_id: @user.id, diary_id: @diary3.id
         expect(response).to be_success
       end
-
+      
       it "Likeの数が増える" do
         expect do
-        post 'create', format: "js", user_id: @user.id, diary_id: @diary3.id
+          post 'create', format: "js", user_id: @user.id, diary_id: @diary3.id
         end.to change(Like, :count).by(1)
       end
     end
 
-    describe "ログインしているユーザーのidではないidでPOST 'create'すると" do
-      it "何も返さない" do
-        post 'create', format: "js", user_id: @user2.id, diary_id: @diary3.id
-        expect(response).to have_text(" ")
-      end
-
-      it "Likeの数は増えない" do
-        expect do
-        post 'create', format: "js", user_id: @user2.id, diary_id: @diary3.id
-        end.not_to change(Like, :count)
-      end
-    end
-
-    describe "ログインしているユーザーのidで自分自身の日記をLikeしようとすると" do
+    describe "自分自身の日記をLikeしようとすると" do
       it "何も返さない" do
         post 'create', format: "js", user_id: @user.id, diary_id: @diary.id
         expect(response).to have_text(" ")
@@ -46,12 +33,12 @@ RSpec.describe LikesController, :type => :controller do
 
       it "Likeの数は増えない" do
         expect do
-        post 'create', format: "js", user_id: @user.id, diary_id: @diary.id
+          post 'create', format: "js", user_id: @user.id, diary_id: @diary.id
         end.not_to change(Like, :count)
       end
     end
-    
-    describe "ログインしているユーザーidでDELETE 'destroy'すると" do
+
+    describe "DELETE 'destroy'" do
       before do
         @user.likes.create(diary_id: @diary3.id)
       end
@@ -67,8 +54,23 @@ RSpec.describe LikesController, :type => :controller do
         end.to change(Like, :count).by(-1)
       end
     end
+  end
 
-    describe "ログインしているユーザーのものでないLikeを消そうとすると" do
+  describe "ログインしているユーザーのidではないidで" do
+    describe "POST 'create'すると" do
+      it "何も返さない" do
+        post 'create', format: "js", user_id: @user2.id, diary_id: @diary3.id
+        expect(response).to have_text(" ")
+      end
+
+      it "Likeの数は増えない" do
+        expect do
+          post 'create', format: "js", user_id: @user2.id, diary_id: @diary3.id
+        end.not_to change(Like, :count)
+      end
+    end
+
+    describe "DELETE 'destroy'" do
       before do
         @user2.likes.create(diary_id: @diary3.id)
       end
@@ -78,7 +80,6 @@ RSpec.describe LikesController, :type => :controller do
           delete 'destroy', format: "js", user_id: @user3.id, diary_id: @diary3.id
         end.not_to change(Like, :count)
       end
-      
     end
   end
   
