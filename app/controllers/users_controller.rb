@@ -18,6 +18,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def remove_profile
+    @user.remove_profile_image!
+    @user.save
+    redirect_to edit_user_url(@user), notice: "プロフィール画像を削除しました"
+  end
+
   private
 
   def user_params

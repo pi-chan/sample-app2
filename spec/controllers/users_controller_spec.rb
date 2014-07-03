@@ -65,6 +65,18 @@ RSpec.describe UsersController, :type => :controller do
         expect(@user).to be_profile_image
       end      
     end
+
+    describe "GET 'remove_profile'すると" do
+      before do
+        @user.profile_image = @file
+        @user.save
+      end
+
+      it "プロフィール画像が削除される" do
+        get 'remove_profile', id: @user.id
+        expect(@user).not_to be_profile_image
+      end
+    end
   end
 
   describe "ログインしていないユーザーidで" do
@@ -81,6 +93,14 @@ RSpec.describe UsersController, :type => :controller do
         expect(response).to redirect_to(new_user_session_url)
       end
     end
+
+    describe "GET 'remove_profile'すると" do
+      it "ログインページにリダイレクトされる" do
+        get 'remove_profile', id: @user2.id
+        expect(response).to redirect_to(new_user_session_url)
+      end
+    end
+    
   end
 
   describe "ログインしていないとき" do

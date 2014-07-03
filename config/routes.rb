@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   post 'likes/create'
   delete 'likes/destroy'
+  get 'users/:id/remove_profile', to: "users#remove_profile", as: "users_remove_profile"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

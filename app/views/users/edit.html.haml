@@ -3,6 +3,7 @@
     ユーザー情報
   - if @user.profile_image?
     %div= image_tag @user.profile_image.medium.url
+    = link_to "削除する", users_remove_profile_path(@user)
   - else
     = image_tag asset_path("defaults/profile_small.png")
     
@@ -11,6 +12,7 @@
     .form-group
       = f.label :profile_image, "プロフィール画像"
       = f.file_field :profile_image, class:"form-control"
+      = f.hidden_field :profile_image_cache
     .form-group
       = f.label :name, "ニックネーム"
       = f.text_field :name, :autofocus => true, class:"form-control"
