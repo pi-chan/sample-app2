@@ -50,6 +50,21 @@ RSpec.describe UsersController, :type => :controller do
         expect(@user.ship_zip_code).not_to eq(@old_ship_zip_code)
       end
     end
+
+    describe "PUT 'update'でプロフィールを更新しようとすると" do
+      before do
+        @file = fixture_file_upload("sample.png", "image/png")
+      end
+      
+      it "画像ファイルURLがアップロードされる" do
+        put 'update', id: @user.id, user: {
+          id: @user.id,
+          profile_image: @file,
+          current_password: "password"
+        }
+        expect(@user).to be_profile_image
+      end      
+    end
   end
 
   describe "ログインしていないユーザーidで" do

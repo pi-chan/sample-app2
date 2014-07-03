@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :ship_name, :ship_zip_code, :ship_address)
+    params.require(:user).permit(:name, :ship_name, :ship_zip_code, :ship_address, :profile_image)
   end
 
   def set_and_check_user

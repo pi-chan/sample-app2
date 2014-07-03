@@ -1,8 +1,16 @@
 %div.devise
   %h2
     ユーザー情報
+  - if @user.profile_image?
+    %div= image_tag @user.profile_image.medium.url
+  - else
+    = image_tag asset_path("defaults/profile_small.png")
+    
   = form_for(@user, html:{ method: :put, role: "form" }) do |f|
     = render partial: "error_messages", locals:{object: @user}
+    .form-group
+      = f.label :profile_image, "プロフィール画像"
+      = f.file_field :profile_image, class:"form-control"
     .form-group
       = f.label :name, "ニックネーム"
       = f.text_field :name, :autofocus => true, class:"form-control"

@@ -48,4 +48,8 @@ RSpec.configure do |config|
   config.before(:all) do
     FactoryGirl.reload
   end
+
+  config.after(:all) do
+    FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
+  end
 end
