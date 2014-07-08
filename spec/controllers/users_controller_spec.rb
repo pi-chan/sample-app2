@@ -62,7 +62,7 @@ RSpec.describe UsersController, :type => :controller do
           profile_image: @file,
           current_password: "password"
         }
-        expect(@user).to be_profile_image
+        expect(@user.reload).to be_profile_image
       end      
     end
 
