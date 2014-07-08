@@ -4,6 +4,8 @@ class Diary < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   has_many :likers, through: :likes, source: :user
 
+  has_many :comments, dependent: :destroy
+
   validates :title, presence: true
   validates :body, presence: true
   validates :user_id, presence: true
@@ -11,7 +13,7 @@ class Diary < ActiveRecord::Base
   default_scope { order(created_at: :desc) }
 
   def htmlized_body
-    "<div>#{body}</div>".html_safe
+    "<div>#{body}</div>".gsub("\n", "<br />").html_safe
   end
 
 end

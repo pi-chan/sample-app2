@@ -1,4 +1,4 @@
-= form_for [current_user, @diary], role:"form", html:{method: method} do |f|
+= form_for [current_user, @diary], role:"form", html:{method: method, class:"col-xs-6"} do |f|
   .form-group
     = f.label :title, "タイトル"
     = f.text_field :title, autofocus:true, class:"form-control"
