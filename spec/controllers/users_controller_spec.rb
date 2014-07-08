@@ -56,7 +56,7 @@ RSpec.describe UsersController, :type => :controller do
         @file = fixture_file_upload("sample.png", "image/png")
       end
       
-      it "画像ファイルURLがアップロードされる" do
+      it "画像ファイルがアップロードされる" do
         put 'update', id: @user.id, user: {
           id: @user.id,
           profile_image: @file,

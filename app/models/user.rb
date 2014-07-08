@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :like_diaries, through: :likes, source: :diary
   has_many :comments, foreign_key: "commenter_id", dependent: :destroy
 
-  mount_uploader :profile_image, ProfileImageUploader
+  mount_uploader :profile_image, UploaderBase
 
   def display_name
     name.presence || email

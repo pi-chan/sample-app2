@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ProfileImageUploader < CarrierWave::Uploader::Base
+class UploaderBase < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -47,10 +47,16 @@ class ProfileImageUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :medium do
     process :resize_to_fit => [128, 128]
+    # def full_filename(for_file)
+    #   "medium.jpg"
+    # end
   end
 
   version :small do
     process :resize_to_fit => [50, 50]
+    # def full_filename(for_file)
+    #   "small.jpg"
+    # end
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -62,7 +68,9 @@ class ProfileImageUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    "profile_image.jpg"
+    time = Time.now
+    name = time.strftime('%Y%m%d%H%M%S') + '.jpg'
+    name.downcase
   end
-
+  
 end

@@ -48,7 +48,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'database_rewinder'  
-  gem 'ffaker'
+  gem 'faker'
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'tapp'

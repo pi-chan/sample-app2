@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :products, only: [:index, :show]
+
   post 'likes/create'
   delete 'likes/destroy'
   get 'users/:id/remove_profile', to: "users#remove_profile", as: "users_remove_profile"

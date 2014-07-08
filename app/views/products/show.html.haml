@@ -1,0 +1,9 @@
+%h1= @product.name
+%h2= "#{@product.price} 円"
+
+%div
+  = link_to image_tag(@product.image.medium.url), @product.image.url, target: "_blank"
+  %span= link_to "カートに入れる", "#", role: "button", class:"btn btn-primary"
+
+
+= @product.description.html_safe

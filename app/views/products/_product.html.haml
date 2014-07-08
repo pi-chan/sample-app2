@@ -1,0 +1,8 @@
+%li
+  - url = product_path(product)
+  %a.row(href="#{url}")
+    .col-xs-2
+      %div= image_tag product.image.medium.url
+    .col-xs-6
+      %h2= product.name
+      %h3= "#{product.price} 円"
