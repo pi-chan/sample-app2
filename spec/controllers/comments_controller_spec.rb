@@ -7,6 +7,7 @@ RSpec.describe CommentsController, :type => :controller do
     @user = login_user
     @user2 = FactoryGirl.create(:user)
     @diary = @user.diaries.create(title:"title", body:"body")
+    @diary2 = @user2.diaries.create(title:"title", body:"body")
     @comment = @diary.comments.create(commenter_id: @user.id, body: "comment")
     @comment2 = @diary.comments.create(commenter_id: @user2.id, body: "comment")
     @diary_page = user_diary_url(@user, @diary)
@@ -28,6 +29,12 @@ RSpec.describe CommentsController, :type => :controller do
       it "本文が空であれば日記ページを再度表示する" do
         post 'create', user_id: @user.id, diary_id:@diary.id, comment: { body: "" }
         expect(response).to render_template("diaries/show")
+      end
+
+      it "自分以外のユーザーにコメントをつけるとメールで通知される" do
+        expect do
+          post 'create', user_id: @user2.id, diary_id:@diary2.id, comment: { body: "body" }
+        end.to change(ActionMailer::Base.deliveries, :size).by(1)
       end
     end
 

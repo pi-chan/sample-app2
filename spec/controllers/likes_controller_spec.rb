@@ -23,6 +23,13 @@ RSpec.describe LikesController, :type => :controller do
           post 'create', format: "js", user_id: @user.id, diary_id: @diary3.id
         end.to change(Like, :count).by(1)
       end
+
+      it "相手にメールで通知される" do
+        expect do
+          post 'create', format: "js", user_id: @user.id, diary_id: @diary3.id
+        end.to change(ActionMailer::Base.deliveries, :size).by(1)
+      end
+      
     end
 
     describe "自分自身の日記をLikeしようとすると" do

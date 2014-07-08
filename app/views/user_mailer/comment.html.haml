@@ -1,0 +1,9 @@
+%h1= "#{@user.display_name} 様"
+
+%p
+  さくらマーケットです。<br />
+  = "あなたの日記に#{@commenter.display_name}さんからのコメントがありました。"
+
+%p
+  こちらのURLからご確認ください。<br />
+  = link_to user_diary_url(@user, @diary), user_diary_url(@user, @diary)

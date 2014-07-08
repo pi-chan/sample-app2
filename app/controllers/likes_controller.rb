@@ -5,7 +5,8 @@ class LikesController < ApplicationController
   
   def create
     if @user.id == current_user.id and @diary.user.id != @user.id
-      @user.likes.create(diary_id: @diary.id)
+      @like = @user.likes.create(diary_id: @diary.id)
+      UserMailer.like(@like).deliver
     else
       render nothing: true
     end

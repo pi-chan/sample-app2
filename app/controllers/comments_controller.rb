@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     @comment.commenter_id = current_user.id
 
     if @comment.save
+      UserMailer.comment(@comment).deliver if @user != @comment.commenter
       redirect_to user_diary_url(@user, @diary), notice: "コメントが追加されました"
     else
       render "diaries/show"
