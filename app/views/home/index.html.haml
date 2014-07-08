@@ -1,5 +1,4 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
-
 - if user_signed_in?
-  = render partial:"write_diary_button"
+  = render partial: "diary_list", locals: {title: "みんな"}
+  
+- else 

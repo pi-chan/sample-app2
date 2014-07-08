@@ -7,7 +7,7 @@ class DiariesController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @diaries = @user.diaries
+    @diaries = @user.diaries.page(params[:page])
   end
 
   def show

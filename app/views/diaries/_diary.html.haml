@@ -1,0 +1,10 @@
+%li.row
+  .col-xs-6
+    = link_to diary.title, user_diary_path(diary.user, diary)
+    - if diary.user != current_user
+      = "by #{diary.user.display_name}"
+    %span.label.label-primary(id="like-count-diary-#{diary.id}")= render partial: "diaries/like_count", locals:{diary: diary}
+    %span.label.label-primary= render partial: "diaries/comment_count", locals:{diary: diary}
+    %span.label.label-default= "#{time_ago_in_words(diary.created_at)} ago"
+  .col-xs-6
+    = render partial: "diaries/links", locals:{user: diary.user, diary: diary}

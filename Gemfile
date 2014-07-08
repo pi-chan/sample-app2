@@ -13,6 +13,8 @@ gem 'devise'
 gem 'bootstrap3-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 group :production do
   gem 'pg'
