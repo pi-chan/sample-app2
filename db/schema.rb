@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709022937) do
+ActiveRecord::Schema.define(version: 20140709071839) do
 
   create_table "cart_products", force: true do |t|
     t.integer  "cart_id"
@@ -59,6 +59,21 @@ ActiveRecord::Schema.define(version: 20140709022937) do
     t.text     "description",                   null: false
     t.boolean  "hidden",        default: false
     t.integer  "display_order", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "purchases", force: true do |t|
+    t.integer  "user_id",                    null: false
+    t.string   "ship_name",                  null: false
+    t.string   "ship_address",               null: false
+    t.string   "ship_zip_code",    limit: 7, null: false
+    t.string   "delivery_time"
+    t.date     "delivery_date"
+    t.integer  "product_price"
+    t.integer  "shipping_cost"
+    t.integer  "cash_on_delivery"
+    t.integer  "tax_percentage"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

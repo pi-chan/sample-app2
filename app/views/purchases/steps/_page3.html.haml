@@ -1,0 +1,5 @@
+.form-group
+  = f.hidden_field :product_price, value: current_user.cart.product_price
+  = f.hidden_field :shipping_cost, value: current_user.cart.shipping_cost
+  = f.hidden_field :cash_on_delivery, value: current_user.cart.cash_on_delivery
+  = f.hidden_field :tax_percentage, value: current_user.cart.tax_percentage

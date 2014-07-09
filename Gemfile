@@ -15,6 +15,9 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
+gem 'enumerize'
+gem 'rails-i18n'
+gem 'weekdays'
 
 group :production do
   gem 'pg'

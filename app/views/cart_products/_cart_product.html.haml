@@ -6,11 +6,12 @@
     .col-xs-4
       %h2= product.name
     .col-xs-2
-      = "#{product.price} 円" 
-    .col-xs-2
-      = form_for [current_user, cart_product], role: "form", html: {method: :put} do |f|
-        = f.number_field :amount
-        = f.hidden_field :product_id, value: product.id
-        = f.submit "更新", class:"form-control btn btn-primary"
-    .col-xs-2
-      = link_to "削除", user_cart_product_path(current_user, cart_product), method: :delete, data: { confirm: 'Are you sure?' }, role: "button", class:"btn btn-danger"
+      = "#{product.price} 円"
+    - if defined? @editable
+      .col-xs-2
+        = form_for [current_user, cart_product], role: "form", html: {method: :put} do |f|
+          = f.number_field :amount
+          = f.hidden_field :product_id, value: product.id
+          = f.submit "更新", class:"form-control btn btn-primary"
+      .col-xs-2
+        = link_to "削除", user_cart_product_path(current_user, cart_product), method: :delete, data: { confirm: 'Are you sure?' }, role: "button", class:"btn btn-danger"

@@ -1,0 +1,14 @@
+ja:
+  enumerize:
+    purchase:
+      delivery_time:
+        t_8_12: "8時〜12時"
+        t_12_14: "12時〜14時"
+        t_14_16: "14時〜16時"
+        t_16_18: "16時〜18時"
+        t_18_20: "18時〜20時"
+        t_20_21: "20時〜21時"
+  attributes:
+    ship_name: "お名前"
+    ship_zip_code: "郵便番号"
+    ship_address: "ご住所"

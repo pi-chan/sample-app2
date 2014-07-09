@@ -1,0 +1,9 @@
+.form-group
+  = f.label :ship_name, "お名前"
+  = f.text_field :ship_name, class: "form-control", value: @user.ship_name
+.form-group
+  = f.label :ship_zip_code, "郵便番号"
+  = f.text_field :ship_zip_code, class: "form-control", value: @user.ship_zip_code
+.form-group
+  = f.label :ship_address, "ご住所"
+  = f.text_field :ship_address, class: "form-control", value: @user.ship_address

@@ -1,0 +1,7 @@
+.form-group
+  = f.label :delivery_date, "お届け日"
+  = f.select :delivery_date, @purchase.delivery_date_options, class: "form-control"
+.form-group
+  = f.label :delivery_time, "お届け時間帯"
+  = f.select :delivery_time, Purchase.delivery_time.options, class: "form-control"
+    

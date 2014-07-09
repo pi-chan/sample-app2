@@ -1,0 +1,6 @@
+%ul.product-list
+  = render cart.cart_products
+%h2= "小計 #{cart.product_price} 円"
+%h2= "送料 #{cart.shipping_cost} 円"
+%h2= "代引き手数料 #{cart.cash_on_delivery} 円"
+%h2= "税込み #{cart.total_price_with_tax} 円"

@@ -3,7 +3,6 @@
 - if @cart.cart_products.empty?
   %p ショッピングカートは空です。
 - else
-  %ul.product-list
-    = render @cart.cart_products
-  %h2= "小計 #{@cart.total_price} 円"
-  %h2= "税込み #{@cart.total_price_with_tax} 円"
+  - @editable = true
+  = render partial: "carts/cart_list", locals: {cart: @cart}
+  = link_to "購入手続きへ進む", new_user_purchase_path(current_user), rolte: "button", class: "btn btn-primary btn-large"
