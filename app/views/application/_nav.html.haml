@@ -20,7 +20,7 @@
             %a(href="#" class="dropdown-toggle" data-toggle="dropdown") ショッピング<b class="caret"></b>
             %ul.dropdown-menu
               %li= link_to "商品一覧", products_path
-              %li= link_to "ショッピングカート", "#"
+              %li= link_to "ショッピングカート", user_cart_path(current_user)
     %ul.nav.navbar-nav.navbar-right
       %li.dropdown
         %a(href="#" class="dropdown-toggle" data-toggle="dropdown")

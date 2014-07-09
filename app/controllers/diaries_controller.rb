@@ -59,9 +59,4 @@ class DiariesController < ApplicationController
     @diary = current_user.diaries.find_by_id(params[:id])
   end
 
-  def current_user_required
-    @user = User.find(params[:user_id])
-    redirect_to root_url if @user != current_user
-  end
-  
 end

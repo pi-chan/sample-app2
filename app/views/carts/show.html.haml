@@ -1,0 +1,9 @@
+%h1 ショッピングカート
+
+- if @cart.cart_products.empty?
+  %p ショッピングカートは空です。
+- else
+  %ul.product-list
+    = render @cart.cart_products
+  %h2= "小計 #{@cart.total_price} 円"
+  %h2= "税込み #{@cart.total_price_with_tax} 円"

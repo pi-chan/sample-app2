@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :diaries do
       resources :comments, only: [:create, :edit, :update, :destroy]
     end
+
+    resources :cart_products, only: [:create, :update, :destroy]
+    resource :cart, only: [:show]
   end
 
   resources :products, only: [:index, :show]

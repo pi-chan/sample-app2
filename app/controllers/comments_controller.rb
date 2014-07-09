@@ -44,6 +44,7 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body)
   end
 
+  # override
   def current_user_required
     @comment = Comment.find_by_id(params[:id])
     redirect_to user_diary_path(@user, @diary) if (@comment.commenter != current_user) or !@comment

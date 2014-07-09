@@ -3,7 +3,14 @@
 
 %div
   = link_to image_tag(@product.image.medium.url), @product.image.url, target: "_blank"
-  %span= link_to "カートに入れる", "#", role: "button", class:"btn btn-primary"
+  -# %span= link_to "カートに入れる", user_cart_products(current_user), role: "button", class:"btn btn-primary"
 
+.row
+  = form_for [current_user, @cart_product], role: "form", html:{method: :post, class:"col-xs-2"} do |f|
+    = f.hidden_field :cart_id, value: current_user.cart.id
+    = f.hidden_field :product_id, value: @product.id
+    = f.hidden_field :amount, value: 1
+    .form-group
+      = f.submit "カートに入れる", class:"form-control btn btn-primary"
 
-= @product.description.html_safe
+%div= @product.description.html_safe

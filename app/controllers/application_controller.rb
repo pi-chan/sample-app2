@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
     redirect_to new_user_session_url unless user_signed_in?
   end
 
+  def current_user_required
+    @user = User.find(params[:user_id])
+    redirect_to root_url if @user != current_user
+  end
+
   def store_location
     return unless request.get? 
     if (request.path != "/users/sign_in" &&
