@@ -5,9 +5,11 @@ class PurchasesController < ApplicationController
   before_action :load_wizard, only: [:new, :create]
   
   def index
+    @purchases = @user.purchases.page(params[:page])
   end
 
   def show
+    @purchase = @user.purchases.find_by_id(params[:id])
   end
 
   def new
@@ -16,8 +18,7 @@ class PurchasesController < ApplicationController
 
   def create
     @purchase = @wizard.object
-    if @wizard.save
-      @user.cart.cart_products.destroy_all
+    if @wizard.save and @user.cart.do_purchase(@purchase)
       redirect_to [@user, @purchase], notice: "購入手続きが完了しました"
     else
       render :new

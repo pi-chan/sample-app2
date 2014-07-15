@@ -18,6 +18,7 @@ gem 'bootstrap-kaminari-views'
 gem 'enumerize'
 gem 'rails-i18n'
 gem 'weekdays'
+gem 'paper_trail'
 
 group :production do
   gem 'pg'

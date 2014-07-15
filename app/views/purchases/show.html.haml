@@ -1,2 +1,6 @@
-%h1 Purchases#show
-%p Find me in app/views/purchases/show.html.haml
+%h1= "#{@purchase.purchased_at}のお買い物"
+
+= link_to "購入履歴に戻る", user_purchases_path(@user)
+  
+= render partial: "purchases/purchase_list"
+

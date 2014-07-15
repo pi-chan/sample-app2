@@ -1,0 +1,6 @@
+%li
+  - url = user_purchase_path(@user, purchase)
+  .row
+    .col-xs-3
+      = link_to "#{purchase.purchased_at}のお買い物", url
+    .col-xs-3= "#{purchase.total_price_with_tax}円"

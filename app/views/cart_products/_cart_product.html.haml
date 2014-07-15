@@ -15,3 +15,7 @@
           = f.submit "更新", class:"form-control btn btn-primary"
       .col-xs-2
         = link_to "削除", user_cart_product_path(current_user, cart_product), method: :delete, data: { confirm: 'Are you sure?' }, role: "button", class:"btn btn-danger"
+    - else
+      .col-xs-2
+        = "#{cart_product.amount} 個"
+          

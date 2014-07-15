@@ -1,0 +1,11 @@
+%li
+  - product = purchase_product.product.version_at(purchase_product.created_at)
+  .row
+    .col-xs-2
+      %div= image_tag product.image.medium.url
+    .col-xs-4
+      %h2= product.name
+    .col-xs-2
+      = "#{product.price} 円"
+    .col-xs-2
+      = "#{purchase_product.amount} 個"

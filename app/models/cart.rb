@@ -33,4 +33,23 @@ class Cart < ActiveRecord::Base
   def total_price_with_tax
     (product_price + shipping_cost + cash_on_delivery) * (100 + tax_percentage) / 100
   end
+
+  def do_purchase(purchase)
+    transaction do
+      cart_products.find_each do |cart_product|
+        @product = cart_product.product;
+        purchase.purchase_products.create(
+          product_id: @product.id,
+          amount: cart_product.amount
+        )
+      end
+      cart_products.destroy_all
+    end
+    true
+  rescue
+    purchase.destroy
+    false
+  end
+
+  
 end

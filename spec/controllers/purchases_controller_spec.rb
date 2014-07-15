@@ -6,9 +6,10 @@ RSpec.describe PurchasesController, :type => :controller do
   before do
     @user = login_user
     @user2 = FactoryGirl.create(:user)
-    10.times { FactoryGirl.create(:product) }
+    @purchase_item_count = 10
+    @purchase_item_count.times { FactoryGirl.create(:product) }
     Product.all.each do |p|
-      @user.cart.cart_products.create(product_id:p, amount:1)
+      @user.cart.cart_products.create(product_id:p.id, amount:1)
     end
     @purchase = FactoryGirl.create(:purchase)
   end
@@ -67,6 +68,12 @@ RSpec.describe PurchasesController, :type => :controller do
         it "ショッピングカートが空になる" do
           post 'create', user_id: @user.id, purchase: @params
           expect(@user.cart.cart_products.count).to eq(0)
+        end
+
+        it "PurchaseProductが10増える" do
+          expect do
+            post 'create', user_id: @user.id, purchase: @params
+          end.to change(PurchaseProduct, :count).by(@purchase_item_count)
         end
       end
     end

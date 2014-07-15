@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709071839) do
+ActiveRecord::Schema.define(version: 20140715001951) do
 
   create_table "cart_products", force: true do |t|
     t.integer  "cart_id"
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 20140709071839) do
     t.datetime "updated_at"
   end
 
+  create_table "purchase_products", force: true do |t|
+    t.integer  "purchase_id"
+    t.integer  "product_id"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "purchase_products", ["purchase_id", "product_id"], name: "index_purchase_products_on_purchase_id_and_product_id", unique: true
+
   create_table "purchases", force: true do |t|
     t.integer  "user_id",                    null: false
     t.string   "ship_name",                  null: false
@@ -104,5 +114,16 @@ ActiveRecord::Schema.define(version: 20140709071839) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "versions", force: true do |t|
+    t.string   "item_type",  null: false
+    t.integer  "item_id",    null: false
+    t.string   "event",      null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
 
 end
