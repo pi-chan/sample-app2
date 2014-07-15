@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :comments, foreign_key: "commenter_id", dependent: :destroy
   has_one :cart, dependent: :destroy
   has_many :purchases
+  has_many :diary_images, dependent: :destroy
 
   mount_uploader :profile_image, UploaderBase
 

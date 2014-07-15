@@ -1,0 +1,8 @@
+%h1 日記に使っている画像
+
+= paginate @diary_images, theme: "twitter-bootstrap-3"
+
+%ul.diary-image-list
+  = render @diary_images
+
+= paginate @diary_images, theme: "twitter-bootstrap-3"

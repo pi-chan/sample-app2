@@ -1,0 +1,2 @@
+module DiaryImagesHelper
+end

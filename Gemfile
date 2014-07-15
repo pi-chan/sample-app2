@@ -19,6 +19,8 @@ gem 'enumerize'
 gem 'rails-i18n'
 gem 'weekdays'
 gem 'paper_trail'
+gem 'jquery-fileupload-rails'
+gem 'remotipart'
 
 group :production do
   gem 'pg'
@@ -60,3 +62,4 @@ group :development, :test do
   gem 'annotate', git: 'git://github.com/ctran/annotate_models.git'
   gem 'timecop'
 end
+

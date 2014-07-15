@@ -1,10 +1,20 @@
-= form_for [current_user, @diary], role:"form", html:{method: method, class:"col-xs-6"} do |f|
-  .form-group
-    = f.label :title, "タイトル"
-    = f.text_field :title, autofocus:true, class:"form-control"
-  .form-group
-    = f.label :body, "本文"
-    = f.text_area :body, class:"form-control", rows: 15
-  .form-group
-    = f.submit title, class:"form-control"
+.row
+  = form_for [current_user, @diary], role:"form", html:{method: method, class:"col-xs-6", id:"diary-form"} do |f|
+    = render partial: "error_messages", locals: {object: @diary}
+    .form-group
+      = f.label :title, "タイトル"
+      = f.text_field :title, autofocus:true, class:"form-control"
+    .form-group
+      = f.label :body, "本文"
+      = f.text_area :body, class:"form-control", rows: 15
+    .form-group
+      = f.submit title, class:"form-control"
 
+.row
+  = form_tag user_diary_images_path(current_user), remote: true, multipart: true, class:"col-xs-6", id:"diary-image-form" do
+    .form-group
+      = file_field_tag :file, class:"form-control", id: "diary-image-file"
+      = submit_tag "画像ファイルを選択 または ドラッグアンドドロップ", class:"btn btn-primary", id:"diary-image-submit"
+
+#dropzone
+  %div ここに画像をドラッグアンドドロップ

@@ -8,3 +8,31 @@
     margin: 2px 0
   }
 }
+
+#diary-image-form {
+  input[type="file"] {
+    display: none;
+  }
+}
+
+#dropzone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+  opacity: 0.9;
+  display: none;
+  pointer-events: none;
+  font-size: 25px;
+  div {
+    top: 50%;
+    position: relative;
+    text-align: center;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);  
+  }
+}
+
+
