@@ -22,27 +22,12 @@ RSpec.describe UsersController, :type => :controller do
       end
     end
 
-    describe "PUT 'update'すると" do
-      it "HTTPサクセス" do
-        put 'update', id: @user.id, user: {id: @user.id}
-        expect(response).to be_success
-      end
-    end
-
-    describe "PUT 'update'でパスワードなしで名前を更新しようとすると" do
-      it "名前が更新されない" do
-        put 'update', id: @user.id, user: {id: @user.id, name: "name"}
-        expect(@user.reload.name).to eq(@old_name)
-      end
-    end
-
-    describe "PUT 'update'でパスワードありで更新しようとすると" do
-      it "名前が更新される" do
+    describe "PUT 'update'" do
+      it "名前などが更新される" do
         put 'update', id: @user.id, user: {
           id: @user.id,
           name: "name", ship_name: "ship name",
-          ship_address: "ship_address", ship_zip_code: "zip code",
-          current_password: "password"
+          ship_address: "ship_address", ship_zip_code: "zip code"
         }
         expect(@user.reload.name).not_to eq(@old_name)
         expect(@user.ship_name).not_to eq(@old_ship_name)

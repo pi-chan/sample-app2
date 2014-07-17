@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  validates :name, presence: true
+
   has_many :diaries, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_diaries, through: :likes, source: :diary
@@ -15,10 +17,6 @@ class User < ActiveRecord::Base
   mount_uploader :profile_image, UploaderBase
 
   after_create :create_cart_if_not_exists
-
-  def display_name
-    name.presence || email
-  end
 
   private
 

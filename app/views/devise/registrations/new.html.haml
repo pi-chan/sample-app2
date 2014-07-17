@@ -4,7 +4,10 @@
     = devise_error_messages!
     .form-group
       = f.label :email, "Eメール"
-      = f.email_field :email, :autofocus => true, class:"form-control"
+      = f.email_field :email, autofocus: true, class:"form-control"
+    .form-group
+      = f.label :name, "ニックネーム（変更可）"
+      = f.email_field :name, class:"form-control"
     .form-group
       = f.label :password, "パスワード"
       = f.password_field :password, class:"form-control"

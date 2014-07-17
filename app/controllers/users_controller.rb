@@ -7,11 +7,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_password = params[:user].delete(:current_password)
-    valid_password = @user.valid_password?(current_password)
-    @user.errors.add("現在のパスワード", "正しいパスワードを入力してください") unless valid_password
-    
-    if valid_password and @user.update(user_params)
+    if @user.update_attributes(user_params)
       redirect_to edit_user_url(@user), notice: "ユーザー情報を更新しました"
     else
       render :edit

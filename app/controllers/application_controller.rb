@@ -4,7 +4,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :configure_permitted_parameters, :if => :devise_controller?
+
   private
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :name
+  end
 
   def sign_in_required
     store_location
@@ -28,9 +34,9 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if current_user.name.empty?
-      flash[:notice] = "便利に使うためにニックネームを入力しましょう"
-      edit_user_registration_path
+    unless current_user.ship_name.present?
+      flash[:notice] = "便利に使うためにお届け情報を入力しましょう"
+      edit_user_path(current_user)
     else
       session[:previous_url] || root_path
     end
