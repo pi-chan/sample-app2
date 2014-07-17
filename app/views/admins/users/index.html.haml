@@ -2,14 +2,13 @@
 
 = paginate @users, theme: "twitter-bootstrap-3"
 
-.row
-  %table.table.table-striped
-    %tr
-      %th メールアドレス
-      %th 表示名
-      %th  
-      %th  
-    = render @users
+%table.table.table-striped
+  %tr
+    %th メールアドレス
+    %th 表示名
+    %th  
+    %th  
+  = render @users
 
 = paginate @users, theme: "twitter-bootstrap-3"
 

@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :product do
     name Faker::Commerce.product_name
-    image "sample.png"
+    image ActionDispatch::Http::UploadedFile.new(:tempfile => File.new("#{Rails.root}/spec/fixtures/sample.png"), filename: "sample.png")
     price Faker::Number.number(4)
     description Faker::Lorem.paragraphs.map{|p| "<p>#{p}</p>"}.join("\n")
     hidden false

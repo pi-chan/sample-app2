@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   namespace :admins do
     root to: 'home#index'
     resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :products
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

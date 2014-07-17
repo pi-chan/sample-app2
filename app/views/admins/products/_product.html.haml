@@ -1,0 +1,11 @@
+%tr
+  %td= product.id
+  %td= image_tag(product.image.medium.url)
+  %td= product.name
+  %td= product.price
+  %td= product.display_order
+  %td
+    = link_to "詳細を見る", admins_product_path(product)
+  %td
+    = link_to "編集", edit_admins_product_path(product), class: "btn btn-primary", role: "button"
+    = link_to "削除", admins_product_path(product), class: "btn btn-danger", role: "button", method: :delete, data: {confirm: "Are you sure?"}

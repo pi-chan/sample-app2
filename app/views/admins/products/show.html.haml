@@ -1,0 +1,16 @@
+%h1 商品#{@product.id}の情報
+
+= link_to "商品一覧へ", admins_products_path, class: "btn btn-primary", role: "button"
+= link_to "編集", edit_admins_product_path(@product), class: "btn btn-primary", role: "button"
+= link_to "削除", admins_product_path(@product), class: "btn btn-danger", role: "button", method: :delete, data: {confirm: "Are you sure?"}
+
+%table.table.table-condensed
+  - Product.column_names.each_with_index do |name, idx|
+    %tr
+      %td= name
+      %td
+        - if name == "image"
+          = @product.image? ? image_tag(@product.image.medium.url) : ""
+        - else
+          = @product.attributes.values[idx]
+

@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.where(hidden:false).page(params[:page])
+    @products = Product.valid.sorted.page(params[:page])
   end
 
   def show

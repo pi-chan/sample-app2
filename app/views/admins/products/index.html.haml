@@ -1,0 +1,19 @@
+%h1 商品管理
+
+%div= link_to "商品を追加する", new_admins_product_path, role: "button", class: "btn btn-primary"
+
+= paginate @products, theme: "twitter-bootstrap-3"
+
+%table.table.table-striped
+  %tr
+    %th ID
+    %th サムネイル
+    %th 商品名
+    %th 価格 
+    %th 表示順
+    %th  
+    %th  
+  = render @products
+  
+
+= paginate @products, theme: "twitter-bootstrap-3"

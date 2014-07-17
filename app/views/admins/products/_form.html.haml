@@ -1,0 +1,25 @@
+= form_for(@product, url:url, html: {role: "form", class: "col-xs-6", method: method}) do |f|
+  = render partial: "error_messages", locals:{object: @product}
+  .form-group
+    = f.label :name, "商品名"
+    = f.text_field :name, autofocus: true, class: "form-control"
+  .form-group
+    = f.label :image, "商品画像"
+    = f.file_field :image, class:"form-control"
+    = f.hidden_field :image_cache
+  .form-group
+    = f.label :price, "価格"
+    = f.number_field :price, class: "form-control"
+  .form-group
+    = f.label :description, "商品の説明"
+    = f.text_area :description, class: "form-control", rows:15
+  .form-group
+    = f.label :hidden, "表示しない"
+    = f.check_box :hidden, class: "form-control"
+  .form-group
+    = f.label :display_order, "表示順"
+    = f.number_field :display_order, class: "form-control"
+  .form-group
+    = link_to "戻る", :back, role: "button", class: "btn btn-default"
+    = f.submit title, class: "btn btn-primary"
+    
