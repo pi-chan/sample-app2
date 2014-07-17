@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :profile_image, UploaderBase
 
-  after_initialize :create_cart_if_not_exists
+  after_create :create_cart_if_not_exists
 
   def display_name
     name.presence || email
