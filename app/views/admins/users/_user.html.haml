@@ -1,0 +1,8 @@
+%tr
+  %td= user.email
+  %td= user.name
+  %td
+    = link_to "詳細を見る", admins_user_path(user)
+  %td
+    = link_to "編集", edit_admins_user_path(user), class: "btn btn-primary", role: "button"
+    = link_to "削除", admins_user_path(user), class: "btn btn-danger", role: "button", method: :delete, data: {confirm: "Are you sure?"}

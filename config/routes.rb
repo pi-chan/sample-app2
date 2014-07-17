@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'home#index'
+  root to: 'home#index'
 
   devise_for :users
 
@@ -20,7 +20,12 @@ Rails.application.routes.draw do
   post 'likes/create'
   delete 'likes/destroy'
   get 'users/:id/remove_profile', to: "users#remove_profile", as: "users_remove_profile"
-  
+
+  namespace :admins do
+    root to: 'home#index'
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

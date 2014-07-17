@@ -8,7 +8,7 @@
       = f.email_field :email, class:"form-control"
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       .form-control
-        Currently waiting confirmation for: #{resource.unconfirmed_email}
+        メールアドレス #{@user.unconfirmed_email} が確認できていません。
     .form-group
       = f.label :password, "パスワード"
       %i (パスワードを変更しない場合は空欄のままにしてください)
