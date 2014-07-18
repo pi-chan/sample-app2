@@ -1,19 +1,19 @@
 %table.table
   %tr
     %td 商品計
-    %td #{number_with_delimeter(purchase.product_price)} 円
+    %td #{number_with_delimiter(purchase.product_price)} 円
   %tr
     %td 送料
-    %td #{number_with_delimeter(purchase.shipping_cost)} 円
+    %td #{number_with_delimiter(purchase.shipping_cost)} 円
   %tr
     %td 代引き手数料
-    %td #{number_with_delimeter(purchase.cash_on_delivery)} 円
+    %td #{number_with_delimiter(purchase.cash_on_delivery)} 円
   %tr
     %td 小計
-    %td #{number_with_delimeter(purchase.total_without_tax)} 円
+    %td #{number_with_delimiter(purchase.total_without_tax)} 円
   %tr
     %td 消費税
-    %td #{number_with_delimeter(purchase.tax)} 円
+    %td #{number_with_delimiter(purchase.tax)} 円
   %tr
     %td 合計
-    %td #{number_with_delimeter(purchase.total_price_with_tax)} 円
+    %td #{number_with_delimiter(purchase.total_price_with_tax)} 円
