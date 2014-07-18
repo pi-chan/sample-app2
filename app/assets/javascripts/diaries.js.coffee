@@ -18,8 +18,10 @@ ready = ->
       s = obj.val()
       p = obj.get(0).selectionStart
       np = p + str.length
-      obj.val(s.substr(0, p) + str + s.substr(p))
-      obj.get(0).setSelectionRange(np, np)
+      new_text = s.substr(0, p) + str + s.substr(p)
+      textEvent = document.createEvent("TextEvent")
+      textEvent.initTextEvent('textInput', true, true, null, new_text)
+      document.getElementById("diary_body").dispatchEvent(textEvent)
   
   $("#diary-form").fileupload 
     url: "/users/" + $user_id + "/diary_images"
