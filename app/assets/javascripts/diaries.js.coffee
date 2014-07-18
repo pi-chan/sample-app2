@@ -16,10 +16,10 @@ ready = ->
     else
       original_text = textarea.val()
       position = textarea.get(0).selectionStart
+      new_position = position + inserting_string.length
       new_text = original_text.substr(0, position) + inserting_string + original_text.substr(position)
-      text_event = document.createEvent("TextEvent")
-      text_event.initTextEvent('textInput', true, true, null, new_text)
-      document.getElementById("diary_body").dispatchEvent(text_event)
+      textarea.val(new_text)
+      textarea.get(0).setSelectionRange(new_position, new_position)
 
   show_dropzone = (e)->
     $dropzone = $("#dropzone")

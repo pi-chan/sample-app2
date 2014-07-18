@@ -11,7 +11,7 @@ class DiaryImagesController < ApplicationController
     @diary_image = @user.diary_images.new
     @diary_image.image = params[:files].try(:first) || params[:file]
     if @diary_image.save
-      tag = "<div><a href='#{@diary_image.image.url}' target='_blank'><img src='#{@diary_image.image.medium.url}' /></a></div>"
+      tag = "\n<div><a href='#{@diary_image.image.url}' target='_blank'><img src='#{@diary_image.image.medium.url}' /></a></div>\n"
       render json: { tag: tag }
     else
       render nothing: true, status: 500
