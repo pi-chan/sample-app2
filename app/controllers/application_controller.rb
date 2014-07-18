@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
   private
 
   def set_variables
-    @recent_comments = Comment.last(10)
-    @recent_likes = Like.last(10)
+    @recent_comments = Comment.last(10).reverse
+    @recent_likes = Like.last(10).reverse
   end
 
   def configure_permitted_parameters
