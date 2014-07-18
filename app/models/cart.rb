@@ -3,6 +3,10 @@ class Cart < ActiveRecord::Base
   has_many :cart_products
   has_many :products, through: :cart_products
 
+  def product_count
+    cart_products.pluck(:amount).inject(&:+)    
+  end
+
   def product_price
     total = 0
     cart_products.find_each do |cart_product|
@@ -26,12 +30,20 @@ class Cart < ActiveRecord::Base
     end
   end
 
+  def total_without_tax
+    product_price + shipping_cost + cash_on_delivery
+  end
+
   def tax_percentage
     8
   end
 
+  def tax
+    total_without_tax  * tax_percentage / 100
+  end
+
   def total_price_with_tax
-    (product_price + shipping_cost + cash_on_delivery) * (100 + tax_percentage) / 100
+    total_without_tax + tax
   end
 
   def do_purchase(purchase)

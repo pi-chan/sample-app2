@@ -1,0 +1,14 @@
+%nav.navbar#admin{role: "navigation"}
+  .navbar-header
+    %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    = link_to "管理画面", admins_root_path, class: "navbar-brand"
+  .collapse.navbar-collapse
+    %ul.nav.navbar-nav
+      %ul.nav.navbar-nav
+        %li= link_to "サービス画面へ", root_path
+        %li= link_to "ユーザー管理", admins_users_path
+        %li= link_to "商品管理", admins_products_path

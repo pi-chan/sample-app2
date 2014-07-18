@@ -1,8 +1,8 @@
-%li
+.col-xs-3
   - url = product_path(product)
   %a.row(href="#{url}")
-    .col-xs-2
-      %div= image_tag product.image.medium.url
-    .col-xs-6
-      %h2= product.name
-      %h3= "#{product.price} 円"
+    .product-grid
+      .product-grid-inner
+        = image_tag product.image.medium.url
+        .right #{product.name}
+        .right #{number_with_delimiter(product.price)} 円

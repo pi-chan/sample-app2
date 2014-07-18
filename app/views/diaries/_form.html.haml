@@ -1,5 +1,5 @@
 .row
-  = form_for [current_user, @diary], role:"form", html:{method: method, class:"col-xs-6", id:"diary-form"} do |f|
+  = form_for [current_user, @diary], role:"form", html:{method: method, id:"diary-form"} do |f|
     = render partial: "error_messages", locals: {object: @diary}
     .form-group
       = f.label :title, "タイトル"

@@ -2,9 +2,43 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.product-list {
-  li {
-    list-style: none;
-    margin: 2px 0;
+.product-grid {
+  /* position: relative; */
+  /* margin-bottom: 20px; */
+  .product-grid-inner {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+
+    img {
+      display: block;
+      margin: 0 auto;
+      max-width: 128px;
+      max-height: 128px;
+    }
+  }
+}
+
+.product-grid:after {
+  padding-top: 100%;
+  display: block;
+  content: "";
+}
+
+.product-single {
+  img {
+    width: 100%;
+  }
+  .name {
+    font-size: 2.5em;
+  }
+  .description {
+    padding: 20px;
+  }
+  .price {
+    font-size: 2.0em;
+    text-align: right;
   }
 }

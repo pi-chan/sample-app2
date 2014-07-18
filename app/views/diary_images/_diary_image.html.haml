@@ -1,6 +1,6 @@
-%li
-  .row
-    .col-xs-3
-      = image_tag diary_image.image.medium.url
-    .col-xs-1
-      = link_to "削除",  user_diary_image_path(current_user, diary_image), method: :delete, data: {confirm: "Are you sure?"}, role: "button", class: "btn btn-danger"
+.col-xs-3.diary-image-grid
+  .diary-image-grid-inner
+    .col-xs-12
+      = image_tag diary_image.image.url
+      .delete-link
+        = link_to "削除",  user_diary_image_path(current_user, diary_image), method: :delete, data: {confirm: "Are you sure?"}, role: "button", class: "btn btn-danger btn-sm"

@@ -1,0 +1,27 @@
+.well
+  %div= image_tag current_user.profile_image.medium.url
+  %ul.plain-list
+    %li= current_user.name
+    %li= link_to "ユーザー情報", edit_user_path(current_user)
+    %li= link_to "アカウント管理", edit_user_registration_path(current_user)
+    %li= link_to "ショッピングカート(#{current_user.cart.product_count})"
+
+.well#recent-likes
+  %h3 新着Good!
+  %ul.plain-list
+    - @recent_likes.each do |rl|
+      %li
+        = link_to rl.diary.title, user_diary_path(rl.diary.user, rl.diary)
+        に
+        = link_to rl.user.name, user_diaries_path(rl.user)
+        がGoodしました
+
+.well#recent-comments  
+  %h3 新着コメント
+  %ul.plain-list
+    - @recent_comments.each do |rc|
+      %li
+        = link_to rc.diary.title, user_diary_path(rc.diary.user, rc.diary)
+        に
+        = link_to rc.commenter.name, user_diaries_path(rc.commenter)
+        がコメントしました

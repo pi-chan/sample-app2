@@ -1,21 +1,16 @@
-%li
-  - product = cart_product.product
-  .row
-    .col-xs-2
-      %div= image_tag product.image.medium.url
-    .col-xs-4
-      %h2= product.name
-    .col-xs-2
-      = "#{product.price} 円"
-    - if defined? @editable
-      .col-xs-2
-        = form_for [current_user, cart_product], role: "form", html: {method: :put} do |f|
-          = f.number_field :amount
-          = f.hidden_field :product_id, value: product.id
-          = f.submit "更新", class:"form-control btn btn-primary"
-      .col-xs-2
-        = link_to "削除", user_cart_product_path(current_user, cart_product), method: :delete, data: { confirm: 'Are you sure?' }, role: "button", class:"btn btn-danger"
-    - else
-      .col-xs-2
-        = "#{cart_product.amount} 個"
-          
+- product = cart_product.product
+%tr
+  %td= image_tag product.image.medium.url
+  %td= product.name
+  %td #{number_with_delimiter(product.price)}円
+  - if defined? @editable
+    %td
+      = form_for [current_user, cart_product], role: "form", html: {method: :put} do |f|
+        = f.number_field :amount
+        = f.hidden_field :product_id, value: product.id
+        個
+    %td
+      = link_to "更新", "#", role: "button", class:"btn btn-primary update-cart-product-button", id: "update-cart-product-#{cart_product.id}"
+      = link_to "削除", user_cart_product_path(current_user, cart_product), method: :delete, data: { confirm: 'Are you sure?' }, role: "button", class:"btn btn-danger"
+  - else
+    %td #{cart_product.amount} 個

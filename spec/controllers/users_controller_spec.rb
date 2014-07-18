@@ -26,7 +26,7 @@ RSpec.describe UsersController, :type => :controller do
       it "名前などが更新される" do
         put 'update', id: @user.id, user: {
           id: @user.id,
-          name: "name", ship_name: "ship name",
+          name: "new name", ship_name: "ship name",
           ship_address: "ship_address", ship_zip_code: "zip code"
         }
         expect(@user.reload.name).not_to eq(@old_name)

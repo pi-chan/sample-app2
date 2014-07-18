@@ -82,7 +82,7 @@ RSpec.describe Admins::UsersController, :type => :controller do
       it "属性が更新される" do
         put 'update', id: @existing_user.id,
         user: {
-          name: "name", ship_name: "ship name",
+          name: "new name", ship_name: "ship name",
           ship_address: "ship_address", ship_zip_code: "zip code"
         }
 

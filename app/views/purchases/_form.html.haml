@@ -1,15 +1,15 @@
 - if @purchase.last_step?
   = render "confirm"
 
-= form_for [current_user, @purchase], role: "form", html:{ method: :post, class: "col-xs-6"} do |f|
+= form_for [current_user, @purchase], role: "form", html:{ method: :post, class: "col-xs-12"} do |f|
   = render partial: "error_messages", locals:{object: @purchase}
   = f.hidden_field :current_step, value: @purchase.current_step
   = render "purchases/steps/page#{@purchase.current_step+1}", f: f
 
-  .form-group.col-xs-6
-    = f.submit "戻る", name: "back_button", class:"btn" unless @purchase.first_step?
+  .form-group
+    = f.submit "戻る", name: "back_button", class:"btn btn-default" unless @purchase.first_step?
     - if @purchase.last_step?
       = f.submit "購入する", class:"btn btn-primary"
     - else
-      = f.submit "次へ", class:"btn"
+      = f.submit "次へ", class:"btn btn-default"
         

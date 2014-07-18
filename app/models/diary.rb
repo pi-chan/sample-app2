@@ -12,6 +12,8 @@ class Diary < ActiveRecord::Base
 
   default_scope { order(created_at: :desc) }
 
+  paginates_per 10
+
   def htmlized_body
     "<div>#{body}</div>".gsub("\n", "<br />").html_safe
   end

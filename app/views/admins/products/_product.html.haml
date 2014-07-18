@@ -2,7 +2,7 @@
   %td= product.id
   %td= image_tag(product.image.medium.url)
   %td= product.name
-  %td= product.price
+  %td= number_with_delimiter(product.price)
   %td= product.display_order
   %td
     = link_to "詳細を見る", admins_product_path(product)

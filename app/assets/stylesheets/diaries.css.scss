@@ -2,10 +2,74 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.diary-list {
+$header-color: #009C0B;
+$solid-border: 1px solid black;
+
+.diary-title {
+  margin: 5px 0;
+  display: inline;
+  line-height: 32px;
+}
+
+.diary-grid {
+  margin-bottom: 20px;
+  .diary-grid-inner {
+    margin: 10px;
+    border: $solid-border;
+    .diary-header {
+      padding: 5px;
+      background-color: $header-color;
+      color: white;
+      a {
+	color: white;
+      }
+      h3 {
+	@extend .diary-title;
+      }
+    }
+    .body {
+      padding: 10px;
+    }
+  }
+}
+
+.diary-single {
+  border: $solid-border;
+  .header {
+    background: $header-color;
+    padding: 5px;
+    color: white;
+    h3 {
+      @extend .diary-title;
+    }
+  }
+  .body {
+    padding: 10px;
+  }
+}
+
+.diary-info {
+  float: right;
+}
+
+.diary-links {
+  padding: 10px;
+}
+
+.comment-list {
   li {
+    border-top: $solid-border;
     list-style: none;
-    margin: 2px 0
+    .body {
+      min-height: 32px;
+      padding: 6px;
+    }
+    .footer {
+      padding: 6px;
+    }
+  }
+  li:last-child {
+    border-bottom: $solid-border;
   }
 }
 
@@ -15,7 +79,7 @@
   }
 }
 
-#dropzone {
+dropzone {
   position: absolute;
   top: 0;
   left: 0;

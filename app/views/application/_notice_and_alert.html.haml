@@ -1,0 +1,11 @@
+- if notice
+  %div.alert.alert-success.alert-dismissable
+    = notice
+    %button(type="button" class="close" data-dismiss="alert" aria-hidden="true")
+      &times
+
+- if alert
+  %div.alert.alert-warning.alert-dismissable
+    = alert
+    %button(type="button" class="close" data-dismiss="alert" aria-hidden="true")
+      &times

@@ -9,16 +9,12 @@
   %body
     = render partial: 'nav'
     .container
-      - if notice
-        %div.alert.alert-success.alert-dismissable
-          = notice
-          %button(type="button" class="close" data-dismiss="alert" aria-hidden="true")
-            &times
-
-      - if alert
-        %div.alert.alert-warning.alert-dismissable
-          = alert
-          %button(type="button" class="close" data-dismiss="alert" aria-hidden="true")
-            &times
-
-      = yield
+      = render partial: 'notice_and_alert'
+      - if user_signed_in?
+        .row
+          .col-xs-3
+            = render "left_column"
+          .col-xs-9
+            = yield
+      - else
+        = yield

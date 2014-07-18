@@ -4,5 +4,9 @@
   %p ショッピングカートは空です。
 - else
   - @editable = true
-  = render partial: "carts/cart_list", locals: {cart: @cart}
-  = link_to "購入手続きへ進む", new_user_purchase_path(current_user), rolte: "button", class: "btn btn-primary btn-large"
+  %table.table.table-striped
+    = render @cart.cart_products
+  .col-xs-6
+    = render partial: "carts/cart_info", locals: {cart: @cart}
+  .col-xs-6
+    = link_to "購入手続きへ進む", new_user_purchase_path(current_user), role: "button", class: "btn btn-primary btn-large"

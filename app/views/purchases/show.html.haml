@@ -2,5 +2,7 @@
 
 = link_to "購入履歴に戻る", user_purchases_path(@user)
   
-= render partial: "purchases/purchase_list"
-
+%table.table.table-striped
+  = render @purchase.purchase_products
+.col-xs-6
+  = render partial: "purchases/purchase_info", locals: {purchase: @purchase}

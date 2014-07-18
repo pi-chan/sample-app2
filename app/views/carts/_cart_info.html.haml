@@ -1,0 +1,19 @@
+%table.table
+  %tr
+    %td 商品計
+    %td #{number_with_delimiter(cart.product_price)} 円
+  %tr
+    %td 送料
+    %td #{number_with_delimiter(cart.shipping_cost)} 円
+  %tr
+    %td 代引き手数料
+    %td #{number_with_delimiter(cart.cash_on_delivery)} 円
+  %tr
+    %td 小計
+    %td #{number_with_delimiter(cart.total_without_tax)} 円
+  %tr
+    %td 消費税
+    %td #{number_with_delimiter(cart.tax)} 円
+  %tr
+    %td 合計
+    %td #{number_with_delimiter(cart.total_price_with_tax)} 円

@@ -1,3 +1,6 @@
 %h2 確認
 
-= render partial: "carts/cart_list", locals: {cart: current_user.cart}
+%table.table.table-striped
+  = render current_user.cart.cart_products
+.col-xs-6
+  = render partial: "carts/cart_info", locals: {cart: current_user.cart}

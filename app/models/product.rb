@@ -21,4 +21,6 @@ class Product < ActiveRecord::Base
 
   mount_uploader :image, UploaderBase
 
+  paginates_per 40
+
 end

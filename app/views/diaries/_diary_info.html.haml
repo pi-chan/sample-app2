@@ -1,0 +1,7 @@
+.diary-info
+  - if diary.user.profile_image?
+    = image_tag diary.user.profile_image.small.url, class: "round-profile"
+  #{diary.user.name}
+  .label.label-info= "#{time_ago_in_words(diary.created_at)} 前"
+  .label.label-info(id="like-count-diary-#{diary.id}")= render partial: "diaries/like_count", locals:{diary: diary}
+  .label.label-info= render partial: "diaries/comment_count", locals:{diary: diary}
