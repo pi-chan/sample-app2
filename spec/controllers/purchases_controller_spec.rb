@@ -55,7 +55,7 @@ RSpec.describe PurchasesController, :type => :controller do
         
         it "購入ページにリダイレクトされる" do
           post 'create', user_id: @user.id, purchase: @params
-          purchase = @user.purchases.last
+          purchase = @user.purchases.first
           expect(response).to redirect_to(user_purchase_url(@user, purchase))
         end
 
