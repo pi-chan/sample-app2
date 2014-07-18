@@ -4,24 +4,36 @@
 
 ready = ->
   submitting = false
-  m = document.location.pathname.match("/users/(.+)/diaries")
-  $user_id = m[1]
+  match = document.location.pathname.match("/users/(.+)/diaries")
+  $user_id = match[1]
 
-  insert_string_at_caret = (target, str)->
-    obj = $(target)
-    obj.focus()
+  insert_string_at_caret = (textarea, inserting_string)->
+    textarea.focus()
     if navigator.userAgent.match(/MSIE/)
-      r = document.selection.createRange()
-      r.text = str
-      r.select()
+      range = document.selection.createRange()
+      range.text = inserting_string
+      range.select()
     else
-      s = obj.val()
-      p = obj.get(0).selectionStart
-      np = p + str.length
-      new_text = s.substr(0, p) + str + s.substr(p)
-      textEvent = document.createEvent("TextEvent")
-      textEvent.initTextEvent('textInput', true, true, null, new_text)
-      document.getElementById("diary_body").dispatchEvent(textEvent)
+      original_text = textarea.val()
+      position = textarea.get(0).selectionStart
+      new_text = original_text.substr(0, position) + inserting_string + original_text.substr(position)
+      text_event = document.createEvent("TextEvent")
+      text_event.initTextEvent('textInput', true, true, null, new_text)
+      document.getElementById("diary_body").dispatchEvent(text_event)
+
+  show_dropzone = (e)->
+    $dropzone = $("#dropzone")
+    $form = $("#diary-form")
+    $dropzone.height($form.height())
+    $dropzone.css
+      "top":$form.offset().top
+    $dropzone.show()
+    e.preventDefault()
+
+  hide_dropzone = (e)->
+    $dropzone = $("#dropzone")
+    $dropzone.hide()
+    e.preventDefault()
   
   $("#diary-form").fileupload 
     url: "/users/" + $user_id + "/diary_images"
@@ -46,22 +58,8 @@ ready = ->
     tag = JSON.parse(data.responseText).tag
     insert_string_at_caret($("#diary_body"), tag)
 
-  $(document).bind "dragover", (e)->
-    $dropzone = $("#dropzone")
-    $form = $("#diary-form")
-    $dropzone.height($form.height())
-    $dropzone.css
-      "top":$form.offset().top
-      
-    $dropzone.show()
-    console.log e.type
-    e.preventDefault()
-
-  $(document).bind "drop dragleave", (e)->
-    $dropzone = $("#dropzone")
-    $dropzone.hide()
-    console.log e.type
-    e.preventDefault()
+  $(document).bind "dragover", show_dropzone
+  $(document).bind "drop dragleave", hide_dropzone
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
