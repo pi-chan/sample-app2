@@ -4,7 +4,7 @@
     %li= current_user.name
     %li= link_to "ユーザー情報", edit_user_path(current_user)
     %li= link_to "アカウント管理", edit_user_registration_path(current_user)
-    %li= link_to "ショッピングカート(#{current_user.cart.product_count})"
+    %li= link_to "ショッピングカート(#{current_user.cart.product_count || 0})", user_cart_path(current_user)
 
 .well#recent-likes
   %h3 新着Good!
