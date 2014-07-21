@@ -2,4 +2,11 @@
   = render "write_diary_button"
   = render partial: "diary_list", locals: {title: "みんな"}
   
-- else 
+- else
+  .jumbotron
+    %h1 さくらマーケットへようこそ
+    %p さくらマーケットは生鮮食品を扱うECサイトです。
+
+    %ul.plain-list.right
+      %li= link_to "ログインする", new_user_session_path, role:"button", class: "btn btn-primary"
+      %li= link_to "ユーザー登録", new_user_registration_path, role:"button", class: "btn btn-primary"
