@@ -9,7 +9,7 @@
   .form-group
     = f.submit "戻る", name: "back_button", class:"btn btn-default" unless @purchase.first_step?
     - if @purchase.last_step?
-      = f.submit "購入する", class:"btn btn-primary"
+      = f.submit "購入する", class:"btn btn-primary btn-lg"
     - else
-      = f.submit "次へ", class:"btn btn-default"
+      = f.submit "次へ", class:"btn btn-primary btn-lg"
         
