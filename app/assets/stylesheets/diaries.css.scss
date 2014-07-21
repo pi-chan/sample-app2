@@ -16,36 +16,26 @@ $solid-border: 1px solid black;
   .diary-grid-inner {
     margin: 10px;
     border: $solid-border;
-    .diary-header {
-      padding: 5px;
-      background-color: $header-color;
-      color: white;
-      a {
-	color: white;
-      }
-      h3 {
-	@extend .diary-title;
-      }
-    }
-    .body {
-      padding: 10px;
-    }
   }
 }
 
 .diary-single {
   border: $solid-border;
-  .header {
-    background: $header-color;
-    padding: 5px;
+}
+
+.diary-header {
+  padding: 5px;
+  background-color: $header-color;
+  color: white;
+  a {
     color: white;
-    h3 {
-      @extend .diary-title;
-    }
   }
-  .body {
-    padding: 10px;
+  h3 {
+    @extend .diary-title;
   }
+}
+.diary-body {
+  padding: 10px;
 }
 
 .diary-info {

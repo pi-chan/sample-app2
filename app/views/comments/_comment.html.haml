@@ -1,0 +1,10 @@
+%li
+  .body
+    = comment.htmlized_body
+  .footer
+    by 
+    = link_to_user(comment.commenter)
+    .label.label-info #{time_ago_in_words(comment.created_at)} 前
+    - if comment.commenter = current_user
+      = link_to "編集", edit_user_diary_comment_path(@user, @diary, comment), role: "button", class:"btn btn-primary btn-xs"
+      = link_to "削除", user_diary_comment_path(@user, @diary, comment), method: :delete, data: { confirm: 'Are you sure?' }, role: "button", class:"btn btn-danger btn-xs"

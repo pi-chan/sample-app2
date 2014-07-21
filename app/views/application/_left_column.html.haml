@@ -13,7 +13,7 @@
       %li
         = link_to rl.diary.title, user_diary_path(rl.diary.user, rl.diary)
         に
-        = link_to rl.user.name, user_diaries_path(rl.user)
+        = link_to_user(rl.user)
         がGoodしました
 
 .well#recent-comments  
@@ -23,5 +23,5 @@
       %li
         = link_to rc.diary.title, user_diary_path(rc.diary.user, rc.diary)
         に
-        = link_to rc.commenter.name, user_diaries_path(rc.commenter)
+        = link_to_user(rc.commenter)
         がコメントしました

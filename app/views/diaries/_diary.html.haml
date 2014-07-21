@@ -3,6 +3,6 @@
     .diary-header
       %h3= link_to diary.title, user_diary_path(diary.user, diary)
       = render partial: "diaries/diary_info", locals: {diary: diary}
-    .body
+    .diary-body
       #{diary.htmlized_body}
     = render partial: "diaries/links", locals:{user: diary.user, diary: diary}
