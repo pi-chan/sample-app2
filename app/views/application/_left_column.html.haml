@@ -1,5 +1,5 @@
 .well
-  %div= image_tag current_user.profile_image.medium.url
+  %div= image_tag current_user.medium_profile
   %ul.plain-list
     %li= current_user.name
     %li= link_to "ユーザー情報", edit_user_path(current_user)

@@ -27,9 +27,8 @@
       %li.dropdown
         %a#nav-account(href="#" class="dropdown-toggle" data-toggle="dropdown")
           - if current_user
-            - if current_user.profile_image?
-              = image_tag current_user.profile_image.small.url, class: "round-profile"
-              = current_user.try(:name)
+            = image_tag current_user.small_profile, class: "round-profile"
+            = current_user.try(:name)
           - else
             アカウント
           <b class="caret"></b>

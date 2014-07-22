@@ -18,6 +18,22 @@ class User < ActiveRecord::Base
 
   after_create :create_cart_if_not_exists
 
+  def small_profile
+    if profile_image?
+      profile_image.small.url
+    else
+      ActionController::Base.helpers.asset_path("defaults/profile_small.png")
+    end
+  end
+
+  def medium_profile
+    if profile_image?
+      profile_image.medium.url
+    else
+      ActionController::Base.helpers.asset_path("defaults/profile_medium.png")
+    end
+  end
+
   private
 
   def create_cart_if_not_exists
